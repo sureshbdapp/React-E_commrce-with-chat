@@ -10,6 +10,7 @@ import {
   ScrollView,
   FlatList,
   Pressable,
+  TouchableOpacity,
 } from 'react-native';
 import PagerView from 'react-native-pager-view'
 import AlertDialog from './AlertDialog/AlertDialog';
@@ -259,6 +260,7 @@ function Dashboard(): JSX.Element {
             marginBottom: 5,
           }}>
           <FlatList
+          keyExtractor={(data)=> data.image}
             horizontal={true}
             data={data}
             renderItem={({item}) => (
@@ -320,8 +322,10 @@ function Dashboard(): JSX.Element {
             padding: 5,
           }}>
           <FlatList
+            keyExtractor={(data)=> data.image}
             data={data}
             renderItem={({item}) => (
+              <TouchableOpacity onPress={()=>console.log(item)}>
               <View
                 style={{
                   flexDirection: 'row',
@@ -333,6 +337,7 @@ function Dashboard(): JSX.Element {
                   width: '100%',
                   borderRadius: 20,
                   marginTop: 15,
+                
                 }}>
                 {
                   <Image
@@ -368,6 +373,7 @@ function Dashboard(): JSX.Element {
                   />
                 }
               </View>
+              </TouchableOpacity>
             )}
           />
         </View>
